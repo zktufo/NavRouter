@@ -7,7 +7,7 @@
 ### 1.集成
 由于暂时未将库上传至jCenter，目前需要手动引入`navrouter`模块进行调用（后期补上）
 ### 2.使用
-####2.1 配置映射关系
+#### 2.1 配置映射关系
 在`AndroidManifest`中配置`activity`与`url`的映射关系，其中`data`标签配置的scheme、host、path即为给定url的相关信息。
 ![AndroidManifest](http://upload-images.jianshu.io/upload_images/1894569-9c45a76ffb1e63c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -34,6 +34,7 @@ Uri appLinkData = appLinkIntent.getData(); //传递原始信息的Uri
 同样，使用者也可以根据个人的需求，封装其他的方法（如将jsonString转换为对应的实体，这里也就不展开了）。
 #### 2.4 支持CallBack
 使用者可以利用两种方法实现CallBack
+
 1.在`Application`中实现`NavRouterCallBackFactory`，即可实现全局统一控制
 
 ```
@@ -86,7 +87,7 @@ public class RouterApplication extends Application implements NavRouterCallBackF
                 });
 ```
 
-####2.5 支持传Bundle
+#### 2.5 支持传Bundle
 调用`NavRouter.from(context).putExtra(key,bundle).toUri(Uri)` 可传递Bundle给对应的`activity`，并用`getIntent().getBundleExtra(key)`取得对应的Bundle。
 
 #### 2.6 支持外部浏览器及WebView唤起
