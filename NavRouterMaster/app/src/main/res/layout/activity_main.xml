@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.leozheng.navroutermaster.MainActivity">
+
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <TextView
+        android:id="@+id/btn_nav1"
+        style="@style/NavTextTheme"
+        android:text="http://blog-debug.leozheng.com/test"
+        />
+
+    <TextView
+        android:id="@+id/btn_nav2"
+        style="@style/NavTextTheme"
+        android:text="http://blog-debug.leozheng.com/test?year=3"
+        />
+
+    <TextView
+        android:id="@+id/btn_nav3"
+        style="@style/NavTextTheme"
+        android:text="http://blog.leozheng.com/multiparam?year=3&amp;amount=2.0&amp;name=leo"/>
+
+    <TextView
+        android:id="@+id/btn_nav4"
+        style="@style/NavTextTheme"
+        android:text="http://blog.leozheng.com/test/subtest"/>
+
+    <TextView
+        android:id="@+id/btn_nav5"
+        style="@style/NavTextTheme"
+        android:text="http://blog.leozheng.com/withoutCallBack"/>
+
+    <TextView
+        android:id="@+id/btn_nav6"
+        style="@style/NavTextTheme"
+        android:text="http://blog.leozheng.com/browser"/>
+</LinearLayout>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.leozheng.navroutermaster">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:name=".RouterApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".TestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                `
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                    android:host="blog.leozheng.com"
+                    android:path="/test"
+                    android:scheme="http"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                    android:host="blog-debug.leozheng.com"
+                    android:path="/test"
+                    android:scheme="http"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".TestMultiParamActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                    android:scheme="http"
+                    android:host="blog.leozheng.com"
+                    android:path="/multiparam"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".SubTestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                    android:scheme="http"
+                    android:host="blog.leozheng.com"
+                    android:path="/test/subtest"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                    android:scheme="http"
+                    android:host="blog-debug.leozheng.com"
+                    android:path="/test/subtest"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".BrowserActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                    android:scheme="http"
+                    android:host="blog.leozheng.com"
+                    android:path="/browser"/>
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
