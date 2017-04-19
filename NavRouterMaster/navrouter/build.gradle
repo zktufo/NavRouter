@@ -1,4 +1,16 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+
+def siteUrl = 'https://github.com/zktufo/NavRouter'   // 项目的主页
+def gitUrl = 'https://github.com/zktufo/NavRouter.git'   // Git仓库的url
+
+version = "1.0"
+group = "com.leozheng"
 
 android {
     compileSdkVersion 23
@@ -19,6 +31,80 @@ android {
     }
 }
 
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    pkg {
+        repo = 'navrouter'//自己bintray创建仓库名字
+        name = 'navrouter'//Library的名字
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ['Apache-2.0']//不能随便写，只能是仓库创建时选择的license type
+        userOrg = 'leomobile' //自己bintray创建的organization名称
+        publish = true // 是否是公开项目。
+
+        version {
+            name = '1.0'
+            desc = 'An easy way to use url for calling native pages'
+            released  = new Date()
+            vcsTag = 'v1.0'
+            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+        }
+    }
+    configurations = ['archives']
+}
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                // Add your description here
+                name 'NavRouter'
+                description 'High integrated development framework for Android applications.'
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'Apache License 2.0'
+                        url 'https://github.com/zktufo/NavRouter'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'zktufo'        //填写bintray或者github的用户名
+                        name 'zhengkaituo'         //姓名，可以是中文
+                        email 'zkt713@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+
+    task sourcesJar(type: Jar) {
+        from android.sourceSets.main.java.srcDirs
+        classifier = 'sources'
+    }
+    task javadoc(type: Javadoc) {
+        failOnError false //必须添加以免出错
+        source = android.sourceSets.main.java.srcDirs
+        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    }
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
+    artifacts {
+        archives javadocJar
+        archives sourcesJar
+    }
+}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {

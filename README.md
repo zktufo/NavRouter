@@ -5,7 +5,10 @@
 
 ## 使用
 ### 1.集成
-由于暂时未将库上传至jCenter，目前需要手动引入`navrouter`模块进行调用（后期补上）
+~~由于暂时未将库上传至jCenter，目前需要手动引入`navrouter`模块进行调用（后期补上）~~
+
+已将库上传至jcenter,集成仅需要调用下列代码:
+`compile 'com.leozheng:navrouter:1.0'`
 ### 2.使用
 #### 2.1 配置映射关系
 在`AndroidManifest`中配置`activity`与`url`的映射关系，其中`data`标签配置的scheme、host、path即为给定url的相关信息。
